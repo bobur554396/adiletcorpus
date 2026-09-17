@@ -75,6 +75,7 @@ https://doi.org/10.5281/zenodo.22812626
 Version DOI (this release): 10.5281/zenodo.22812626
 Concept DOI (always resolves to the latest version): 10.5281/zenodo.22812625
 Record: https://zenodo.org/records/22812626
+Also on HuggingFace: https://huggingface.co/datasets/bobur-m/adiletcodex
 
 ## Quick start
 ```python
