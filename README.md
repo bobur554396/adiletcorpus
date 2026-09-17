@@ -5,9 +5,10 @@ An article-level, trilingual (Kazakh / Russian / English) corpus of the currentl
 [adilet.zan.kz](https://old.adilet.zan.kz).
 
 **Published on Zenodo:** https://doi.org/10.5281/zenodo.22812626 (v1.0; concept DOI
-10.5281/zenodo.22812625 always resolves to the latest version). 343 documents, 65,825
-article records (RU 22,117 / KK 22,099 / EN 21,609). License CC-BY-4.0. See
-[`README_DATASET.md`](README_DATASET.md).
+10.5281/zenodo.22812625 always resolves to the latest version).
+**On HuggingFace:** https://huggingface.co/datasets/bobur-m/adiletcodex
+343 documents, 65,825 article records (RU 22,117 / KK 22,099 / EN 21,609). License
+CC-BY-4.0. See [`README_DATASET.md`](README_DATASET.md).
 
 This is the **data / research project**. The crawler that produces it is a separate,
 reusable tool: [`adilet-parser`](https://github.com/bobur554396/adilet-parser)
