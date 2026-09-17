@@ -1,8 +1,13 @@
 # AdiletCodex - trilingual article-level corpus of the Codes of Kazakhstan
 
 An article-level, trilingual (Kazakh / Russian / English) corpus of the currently in-force
-**codes** of the Republic of Kazakhstan, parsed from the official legal database
+**codes and laws** of the Republic of Kazakhstan, parsed from the official legal database
 [adilet.zan.kz](https://old.adilet.zan.kz).
+
+**Published on Zenodo:** https://doi.org/10.5281/zenodo.22812626 (v1.0; concept DOI
+10.5281/zenodo.22812625 always resolves to the latest version). 343 documents, 65,825
+article records (RU 22,117 / KK 22,099 / EN 21,609). License CC-BY-4.0. See
+[`README_DATASET.md`](README_DATASET.md).
 
 This is the **data / research project**. The crawler that produces it is a separate,
 reusable tool: [`adilet-parser`](https://github.com/bobur554396/adilet-parser)
@@ -48,7 +53,7 @@ python notebooks/build_qc_notebook.py     # regenerates & executes notebooks/kz_
 ```
 
 ## Status / next
-Raw crawled and QC-clean. Next: packaging (JSONL/CSV + dedup + cross-language alignment by
-(code, article_no) - note the English Civil Code merges General+Special parts, see
-`docs/PACKAGING_NOTES.md`), then Zenodo + HuggingFace + a data descriptor (target:
+Packaged, QC-clean, and **published on Zenodo** (DOI 10.5281/zenodo.22812626, v1.0):
+343 documents, 65,825 article records, metadata date 100% / number 96.7%, no cross-language
+duplicate texts. Next: HuggingFace dataset mirror and a data descriptor (target:
 Data / MDPI or Data in Brief).

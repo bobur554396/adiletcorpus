@@ -70,7 +70,11 @@ See `notebooks/kz_codes_qc.ipynb`.
 ## How to cite
 Mukhsimbayev, B., Pak, A., & Kuralbayev, A. (2026). *AdiletCodex: A Trilingual (Kazakh-Russian-English)
 Article-Level Corpus of the Codes and Laws of Kazakhstan* (Version 1.0) [Data set]. Zenodo.
-https://doi.org/XX.XXXX/zenodo.XXXXXXX  *(DOI assigned on deposit)*
+https://doi.org/10.5281/zenodo.22812626
+
+Version DOI (this release): 10.5281/zenodo.22812626
+Concept DOI (always resolves to the latest version): 10.5281/zenodo.22812625
+Record: https://zenodo.org/records/22812626
 
 ## Quick start
 ```python
