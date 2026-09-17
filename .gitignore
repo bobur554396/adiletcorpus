@@ -1,0 +1,22 @@
+# Large / regenerable data - distributed via Zenodo + HuggingFace, not git
+data/raw/
+data/raw_laws/
+data/raw_api/
+data/meta/
+data/*.jsonl
+data/*.csv
+data/*.gz
+
+# Logs / temp
+*.log
+*.tmp
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,20 @@
+AdiletCodex - License
+======================
+
+Dataset compilation (this dataset: the selection, parsing, article segmentation,
+cross-language alignment, and metadata):
+
+  Creative Commons Attribution 4.0 International (CC BY 4.0)
+  Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+You are free to share and adapt the material for any purpose, provided you give
+appropriate credit (cite the dataset, see README_DATASET.md) and indicate if changes
+were made.
+
+Underlying legal texts:
+The article texts are official normative legal acts of the Republic of Kazakhstan,
+which are public. They were obtained from the official Information and Legal System
+adilet.zan.kz. Please retain attribution to adilet.zan.kz. This is an unofficial
+research copy; the authoritative, in-force text is the one published on adilet.zan.kz.
+
+The dataset is provided "as is", without warranty of any kind.
