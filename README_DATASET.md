@@ -18,6 +18,30 @@ cross-reference links, and rich document-level metadata (act form, legal sphere,
 body, registration numbers, adoption/publication dates, status). To our knowledge it is the
 first article-structured, trilingual full-text corpus of Kazakh legislation.
 
+## Why this corpus
+Kazakh legal NLP has lacked a structured, full-text foundation: existing resources are either
+document-level metadata, Russian-only, or downstream QA sets built on top of statutes they do
+not themselves release. AdiletCodex fills that gap with the article as the unit of record, the
+three official language versions side by side, and the structural + amendment + metadata
+context needed for legal information retrieval, cross-lingual and RAG grounding,
+translation-fidelity study, and temporal ("law-as-of-date") modeling.
+
+## Related datasets and how AdiletCodex differs
+- **KazakhLawCorpus** (Tleubayeva, Data / MDPI 2026; 215,889 records) - document-level metadata
+  only, Kazakh only, no article text. AdiletCodex is complementary and strictly more granular:
+  full text, article-level, trilingual.
+- **justicedao/ipfs_kazakhstan_laws_ir** (HF, ~399k rows) - article-level but Russian only,
+  undocumented, no hierarchy / amendments / status / KK / EN. AdiletCodex adds the two other
+  official languages, the structural hierarchy, amendment notes, status, metadata, and docs.
+- **olzhasAl/adilet-legal-qa-kz** (HF, 13,159 QA pairs, RU+KK) and other Kazakh legal-QA / LoRA
+  sets - downstream tasks, not a source corpus. AdiletCodex provides the underlying statute text
+  those tasks are grounded in.
+- **Uzbek legal corpus** (Tomaris AI) - a methodological twin for a neighbouring jurisdiction
+  (Uzbek-Latin only, no descriptor paper); AdiletCodex is the Kazakh, trilingual counterpart.
+- **RusLawOD** (HF irlspbru/RusLawOD, 304k texts) - Russian national statutory corpus; a
+  language / scope comparator, not Kazakh.
+See `docs/RELATED_WORK.md` for the full positioning and comparators.
+
 ## Contents / size
 - 65,825 article records (one JSON object / one CSV row per article per language)
 - 343 documents: 24 codes + 319 laws (incl. the Constitution); 296 documents present in all

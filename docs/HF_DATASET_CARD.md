@@ -5,15 +5,27 @@ language:
 - ru
 - en
 multilinguality: multilingual
-pretty_name: AdiletCodex - Trilingual Article-Level Corpus of Kazakh Legislation
+pretty_name: 'AdiletCodex: Trilingual (KK/RU/EN) Article-Level Corpus of Kazakh Legal Codes and Laws'
 tags:
 - legal
 - law
+- legal-nlp
 - kazakhstan
+- kz
+- kazakh
+- russian
+- english
 - legislation
+- statute
+- codes
+- laws
 - adilet
 - article-level
 - trilingual
+- multilingual
+- low-resource
+- central-asia
+- legal-information-retrieval
 task_categories:
 - text-retrieval
 - text-classification
