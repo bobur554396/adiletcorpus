@@ -20,3 +20,6 @@ __pycache__/
 .DS_Store
 .vscode/
 .idea/
+
+# private planning notes
+docs/PUBLICATION_PLAN*.md
