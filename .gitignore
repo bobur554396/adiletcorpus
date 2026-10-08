@@ -6,6 +6,10 @@ data/meta/
 data/*.jsonl
 data/*.csv
 data/*.gz
+# also exclude the versioned data backups (large binaries, kept locally only)
+data/**/*.jsonl
+data/**/*.csv
+data/**/*.gz
 
 # Logs / temp
 *.log

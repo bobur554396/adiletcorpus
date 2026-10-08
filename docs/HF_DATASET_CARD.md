@@ -84,10 +84,35 @@ ds = load_dataset("json", data_files="adiletcodex.jsonl", split="train")
 ```
 
 ## Schema
-`doc_id, doc_type, lang, title, status, act_form, legal_sphere, legal_force, adopting_organ,
-database_section, state_registry_number, npa_registration_number, adoption_date, change_date,
-publication_date, adoption_place, region_action, part, section, chapter, article_id,
+`doc_id, doc_type, lang, title, status, act_form, act_form_ru, legal_sphere, legal_sphere_ru,
+adopting_organ, adopting_organ_ru, database_section, database_section_ru, state_registry_number,
+npa_registration_number, adoption_date, change_date, publication_date, publication_reference,
+publication_reference_ru, adoption_place, region_action, part, section, chapter, article_id,
 article_no, article_title, article_text, paragraphs, notes, links, url`
+
+**Language of metadata fields.** Only `title`, `status`, `article_title`, `article_text` are
+truly per-language and are the **official** adilet translations. The document-"passport" fields
+come from adilet's Russian-only document card; in v1.1 several are **localized** to the row's
+language, each with an `*_ru` companion preserving the Russian source (Russian rows keep the
+Russian value):
+
+- **Curated term map** (hand-reviewed, not machine translation): `act_form`, `adopting_organ`,
+  `database_section`.
+- **Machine-translated (local Qwen3.5-122B, thinking disabled) reference metadata** -
+  convenience only, not authoritative, with the Russian source kept in the `*_ru` companion:
+  `legal_sphere`, `publication_reference`. The Kazakh output uses correct Kazakh legal
+  terminology (the earlier Qwen2.5-32B Kazakh was replaced). A number-preservation check
+  protects all digits/dates/article numbers in `publication_reference` (Russian original kept
+  on any mismatch).
+- **Still Russian-by-source:** `region_action`, `adoption_place`.
+
+Use `status` for validity/in-force state. Reproducibility artifacts (term + translation maps,
+QA-failure log, scripts) are in `localization/`.
+
+> **Changed in v1.1:** `act_form`, `adopting_organ`, `database_section` are localized per `lang`
+> via a curated map, and `legal_sphere`, `publication_reference` via machine translation (all
+> with `*_ru` provenance companions); the redundant/mislabeled `legal_force` field was removed
+> (use `status` for in-force state).
 
 ## License & source
 Compilation: CC-BY-4.0. Underlying texts are official public acts of the Republic of
@@ -95,5 +120,5 @@ Kazakhstan (source: adilet.zan.kz). Unofficial research copy; verify in-force te
 
 ## Citation
 Mukhsimbayev, B., Pak, A., & Kuralbayev, A. (2026). *AdiletCodex: A Trilingual (Kazakh-Russian-English)
-Article-Level Corpus of the Codes and Laws of Kazakhstan* (v1.0) [Data set]. Zenodo.
+Article-Level Corpus of the Codes and Laws of Kazakhstan* (v1.1) [Data set]. Zenodo.
 https://doi.org/10.5281/zenodo.22812626 (concept DOI: 10.5281/zenodo.22812625)

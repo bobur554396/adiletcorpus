@@ -34,9 +34,21 @@ statute grounding; Kazakhstan
 (note: underlying legal texts are official public acts of the Republic of Kazakhstan; source
 adilet.zan.kz)
 
-**Version:** 1.0
+**Version:** 1.1
 
 **Language:** Kazakh (kaz), Russian (rus), English (eng)
+
+**v1.1 changes (2026-10-08):** five document-card fields are now localized to each row's
+language, each with a companion `*_ru` column preserving the Russian source value:
+`act_form`, `adopting_organ` and `database_section` via a hand-curated, reviewed term map;
+`legal_sphere` and `publication_reference` via local machine translation (Qwen3.5-122B,
+thinking disabled) provided as reference metadata only, with a digit/date/number-preservation
+check that keeps the Russian original on a mismatch. Only `region_action` and `adoption_place`
+remain Russian-by-source. The redundant/mislabeled `legal_force` field was removed (it
+duplicated `act_form`; validity lives in `status`). No records were added or removed
+(still 65,825 across 343 documents) and the article texts, titles and status are unchanged.
+When uploading v1.1, add it as a **new version** of the existing concept DOI
+10.5281/zenodo.22812625 (a new version DOI will be minted automatically). See `../CHANGELOG.md`.
 
 **Files to upload:**
 - adiletcodex.jsonl.gz

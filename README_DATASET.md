@@ -1,6 +1,6 @@
 # AdiletCodex: A Trilingual (Kazakh-Russian-English) Article-Level Corpus of the Codes and Laws of Kazakhstan
 
-**Version 1.0** - Source: adilet.zan.kz (Information and Legal System of Normative Legal Acts of the Republic of Kazakhstan, "Adilet")
+**Version 1.1** - Source: adilet.zan.kz (Information and Legal System of Normative Legal Acts of the Republic of Kazakhstan, "Adilet")
 
 ## Authors
 - Bobur Mukhsimbayev (corresponding), ORCID 0009-0008-4606-3628, b.mukhsimbaev@kbtu.kz
@@ -58,14 +58,42 @@ Files:
 - `docs/RELATED_WORK.md` - positioning vs prior datasets
 
 ## Record schema (key fields)
-`doc_id, doc_type (code|law), lang (rus|kaz|eng), title, status, act_form, legal_sphere,
-legal_force, adopting_organ, database_section, state_registry_number, npa_registration_number,
-adoption_date, change_date, publication_date, adoption_place, region_action,
+`doc_id, doc_type (code|law), lang (rus|kaz|eng), title, status, act_form, act_form_ru,
+legal_sphere, legal_sphere_ru, adopting_organ, adopting_organ_ru, database_section,
+database_section_ru, state_registry_number, npa_registration_number, adoption_date, change_date,
+publication_date, publication_reference, publication_reference_ru, adoption_place, region_action,
 part, section, chapter, article_id, article_no, article_title, article_text, paragraphs,
 notes, links, url`
 
 `article_text` is the full article body; `paragraphs` holds the numbered points with their
 own inline links; `notes` holds amendment/editorial footnotes.
+
+### Language of the metadata fields (important)
+Only `title`, `status`, `article_title` and `article_text` are genuinely per-language and are
+the **official** adilet.zan.kz translations. The document-"passport" fields come from adilet's
+document card, which adilet publishes in **Russian only**. In v1.1 several of them have been
+**localized** to the row's `lang`; each keeps a companion `*_ru` column with the original
+Russian value for provenance.
+
+- **Official per-language text:** `title`, `status`, `article_title`, `article_text`.
+- **Localized by a curated term map** (official body names / fixed topic sections, reviewed by
+  hand - not machine translation): `act_form`, `adopting_organ`, `database_section`.
+- **Localized by machine translation (local Qwen3.5-122B, thinking disabled), i.e. reference
+  metadata only:** `legal_sphere` and `publication_reference`. These are provided for
+  convenience (filtering / search) and are **not** authoritative; the original Russian is kept
+  in the `*_ru` companion column. The Kazakh output uses correct Kazakh legal terminology (the
+  earlier Qwen2.5-32B Kazakh was replaced). For `publication_reference` a number-preservation
+  check guards all digits, dates and article/issue numbers; where a translation would alter
+  them, the Russian original is kept (logged in `localization/pubref_qa_failures_122b.json`).
+- **Still Russian-by-source (not translated):** `region_action`, `adoption_place`.
+
+Every localized field `X` has an `X_ru` companion (`act_form_ru`, `legal_sphere_ru`,
+`publication_reference_ru`, `adopting_organ_ru`, `database_section_ru`) carrying the original
+Russian. Russian (`rus`) rows keep the Russian value in `X` itself. Use `status` (not act
+form) for validity/in-force state. The former `legal_force` field was **removed in v1.1** (it
+duplicated `act_form` in 323/343 documents and was mislabeled - it was never a validity
+indicator). Reproducibility artifacts (term maps, translation maps, QA-failure log, build
+scripts) live under `localization/`. See `CHANGELOG.md`.
 
 ## How it was built
 Current codes were enumerated from the adilet codes catalogue; substantive in-force laws were
@@ -93,11 +121,11 @@ See `notebooks/kz_codes_qc.ipynb`.
 
 ## How to cite
 Mukhsimbayev, B., Pak, A., & Kuralbayev, A. (2026). *AdiletCodex: A Trilingual (Kazakh-Russian-English)
-Article-Level Corpus of the Codes and Laws of Kazakhstan* (Version 1.0) [Data set]. Zenodo.
-https://doi.org/10.5281/zenodo.22812626
+Article-Level Corpus of the Codes and Laws of Kazakhstan* (Version 1.1) [Data set]. Zenodo.
+https://doi.org/10.5281/zenodo.22812625
 
-Version DOI (this release): 10.5281/zenodo.22812626
 Concept DOI (always resolves to the latest version): 10.5281/zenodo.22812625
+Version 1.0 DOI: 10.5281/zenodo.22812626 (v1.1 version DOI is assigned on upload; not yet published)
 Record: https://zenodo.org/records/22812626
 Also on HuggingFace: https://huggingface.co/datasets/bobur-m/adiletcodex
 
