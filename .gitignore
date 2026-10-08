@@ -27,3 +27,13 @@ __pycache__/
 
 # private planning notes
 docs/PUBLICATION_PLAN*.md
+
+# paper/ build junk - track only the cleaned LaTeX source + figures if desired
+paper/latex/tectonic            # 60 MB tectonic binary
+paper/latex/mdpi_src/           # upstream MDPI template clone (has its own .git, large .eps, template.pdf)
+paper/**/*.bak_dashes           # pre-dash-fix backups
+paper/**/*.aux
+paper/**/*.out
+paper/**/*.fls
+paper/**/*.fdb_latexmk
+paper/latex/pics/*.eps          # large EPS logos; the build uses the .pdf versions

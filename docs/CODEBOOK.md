@@ -49,7 +49,8 @@ Fields still marked **Russian-by-source** are not translated at all.
 | `publication_reference_ru` | string | Russian source | original Russian `publication_reference`, kept on every row for provenance (v1.1). |
 | `adoption_place` | string | **Russian-by-source** | e.g. `г. Астана` |
 | `region_action` | string | **Russian-by-source** | territorial scope |
-| `doc_date`, `doc_number` | string\|null | - | adoption date / number parsed from the citation |
+| `citation` | string | per-language | human-readable source citation of the act (e.g. `Code of the Republic of Kazakhstan dated 20 June, 2003 № 442`); `doc_date` / `doc_number` are parsed from it. |
+| `doc_date`, `doc_number` | string\|null | - | adoption date (ISO `yyyy-mm-dd`) / number parsed from `citation` |
 
 > **Removed in v1.1:** `legal_force`. It duplicated `act_form` in 323/343 documents and was
 > mislabeled - it was never a validity indicator. Use `status` for validity and `act_form` for
@@ -73,4 +74,26 @@ Fields still marked **Russian-by-source** are not translated at all.
 - Languages align by (`doc_id`, `article_no`). A document keeps the same `doc_id` across
   languages.
 - Gaps in `article_no` within a document correspond to repealed articles.
-- English exists for most but not all documents (adilet does not translate everything).
+- English exists for most but not all documents (adilet does not translate everything):
+  296 of 343 documents are present in all three languages, 37 in Kazakh+Russian, 5 in Kazakh
+  only, 3 in Russian only, 2 in Kazakh+English.
+- `adopting_organ` / `adopting_organ_ru` are null for 288 records (documents whose adilet card
+  lists no adopting body); `publication_reference` / `publication_reference_ru` are empty for
+  127 records (documents with no publication source recorded).
+
+## Known limitations
+- **Residual same-number articles.** `article_no` is unique within most (`doc_id`, `lang`)
+  groups, but 19 groups contain more than one record with the same `article_no`. These come
+  from three causes and are retained as-is: (a) a displayed number that legitimately recurs
+  across different structural parts of a code; (b) entry-into-force / amendment clauses inside
+  "Final and transitional provisions" chapters that the parser emitted as separate records
+  (their `article_title` is a clause fragment, e.g. `article 38;`); and (c) compound inserted
+  numbers (e.g. `Article 15-24`) whose `article_no` was truncated to the base number (`15`).
+  Disambiguate with `article_id` (unique HTML anchor), `article_title`, and the structural
+  columns (`part` / `section` / `chapter`). This is inherited from v1.0 and is scheduled for a
+  clean re-parse in a future major version.
+- **Reference-metadata fields are machine translation.** `legal_sphere` and
+  `publication_reference` (and only these) are translated by a local LLM for
+  filtering/search convenience and are not authoritative; the original Russian is always kept in
+  the `*_ru` companion column. The substantive article content (`title`, `status`,
+  `article_title`, `article_text`) is the official adilet.zan.kz translation.

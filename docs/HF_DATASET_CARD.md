@@ -84,11 +84,15 @@ ds = load_dataset("json", data_files="adiletcodex.jsonl", split="train")
 ```
 
 ## Schema
-`doc_id, doc_type, lang, title, status, act_form, act_form_ru, legal_sphere, legal_sphere_ru,
+`doc_id, doc_type, slug, lang, title, status, act_form, act_form_ru, legal_sphere, legal_sphere_ru,
 adopting_organ, adopting_organ_ru, database_section, database_section_ru, state_registry_number,
 npa_registration_number, adoption_date, change_date, publication_date, publication_reference,
-publication_reference_ru, adoption_place, region_action, part, section, chapter, article_id,
-article_no, article_title, article_text, paragraphs, notes, links, url`
+publication_reference_ru, adoption_place, region_action, citation, doc_date, doc_number, part,
+section, chapter, article_id, article_no, article_title, article_text, paragraphs, notes, links, url`
+
+(37 fields total; `paragraphs`, `notes`, `links` are nested and JSONL-only, so the CSV carries
+the 34 scalar fields. `citation` is the human-readable source citation, with `doc_date` /
+`doc_number` parsed from it.)
 
 **Language of metadata fields.** Only `title`, `status`, `article_title`, `article_text` are
 truly per-language and are the **official** adilet translations. The document-"passport" fields
@@ -121,4 +125,5 @@ Kazakhstan (source: adilet.zan.kz). Unofficial research copy; verify in-force te
 ## Citation
 Mukhsimbayev, B., Pak, A., & Kuralbayev, A. (2026). *AdiletCodex: A Trilingual (Kazakh-Russian-English)
 Article-Level Corpus of the Codes and Laws of Kazakhstan* (v1.1) [Data set]. Zenodo.
-https://doi.org/10.5281/zenodo.22812626 (concept DOI: 10.5281/zenodo.22812625)
+https://doi.org/10.5281/zenodo.22812625 (concept DOI, resolves to the latest version; v1.0
+version DOI: 10.5281/zenodo.22812626)

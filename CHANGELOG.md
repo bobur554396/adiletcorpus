@@ -73,7 +73,9 @@ A `<field>_ru` provenance column holding the original Russian value is added for
   content (article text, titles, status) remains the **official** adilet.zan.kz translation,
   **not** machine translation. Original Russian is preserved in the `*_ru` columns.
 - **CSV:** `publication_reference` (previously omitted) and all four `*_ru` columns were added
-  to the flat CSV; the CSV now has 33 columns.
+  to the flat CSV (the `citation` scalar was added in the pre-release consolidation below,
+  bringing the flat CSV to its final **34 columns** = all scalar fields; the three nested
+  fields `paragraphs` / `notes` / `links` remain JSONL-only).
 - v1.1 pre-localization files preserved under `data/v1.1_pre_qwen_backup/`.
 
 ### Changed - reference-metadata MT upgraded to Qwen3.5-122B (2026-10-08)
@@ -108,6 +110,23 @@ originals. English (`eng`) rows carry the new EN, Kazakh (`kaz`) rows the new KK
   `localization/publication_reference_map.jsonl` (each line `{ru, en, kk, numbers_ok, model}`);
   scripts `localization/translate_122b.py` and `localization/reapply_122b.py`; the 32B maps are
   preserved under `localization/32b_backup/` and the pre-122B data under `data/pre_122b_backup/`.
+
+### Pre-release consolidation (2026-10-08)
+Final tidy-up before the single v1.1 upload. No article records, titles or status changed
+(still 65,825 records / 37 JSONL fields across 343 documents).
+- **`citation` added to the flat CSV** so the CSV carries all 34 scalar fields and is at full
+  parity with the JSONL (only the nested `paragraphs` / `notes` / `links` stay JSONL-only).
+  `adiletcodex.csv` and `adiletcodex.csv.gz` regenerated from the current JSONL; row counts and
+  gzip line counts verified against the JSONL.
+- **Documentation completed and reconciled.** All 37 fields (adding `slug`, `citation`,
+  `doc_date`, `doc_number`) are now listed in `README_DATASET.md`, `docs/CODEBOOK.md` and
+  `docs/HF_DATASET_CARD.md`. The concept DOI (10.5281/zenodo.22812625) is used as the primary
+  citation link across the docs. A "Known limitations" note (residual same-number articles;
+  nullable `adopting_organ` / `publication_reference`) was added to the codebook, and the
+  over-strong "duplicate article numbers collapsed" wording in `README_DATASET.md` was corrected.
+- **Reproducibility artifacts tracked.** The `localization/` term maps, translation maps,
+  QA-failure logs and build scripts are now committed to the repository.
+- Added `CITATION.cff`.
 
 ## [1.0] - 2026-09-17
 

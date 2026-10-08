@@ -4,8 +4,8 @@ An article-level, trilingual (Kazakh / Russian / English) corpus of the currentl
 **codes and laws** of the Republic of Kazakhstan, parsed from the official legal database
 [adilet.zan.kz](https://adilet.zan.kz).
 
-**Published on Zenodo:** https://doi.org/10.5281/zenodo.22812626 (concept DOI
-10.5281/zenodo.22812625 always resolves to the latest version).
+**On Zenodo:** https://doi.org/10.5281/zenodo.22812625 (concept DOI, always resolves to the
+latest version; the v1.0 version DOI is 10.5281/zenodo.22812626).
 **On HuggingFace:** https://huggingface.co/datasets/bobur-m/adiletcodex
 
 343 documents, 65,825 article records (RU 22,117 / KK 22,099 / EN 21,609). License
@@ -42,5 +42,7 @@ Hub (links above); because of its size it is not stored in this repository. See
 `docs/CODEBOOK.md` for field definitions and `CHANGELOG.md` for the version history.
 
 ## Status
-Published on Zenodo (v1.0, DOI 10.5281/zenodo.22812626) and HuggingFace. A data descriptor is
-in preparation (target: *Data* / MDPI).
+v1.0 is published on Zenodo (version DOI 10.5281/zenodo.22812626) and HuggingFace. v1.1 (a
+schema-clarity release, see `CHANGELOG.md`) is prepared and pending upload; this README is
+bumped to v1.1 once that version is published. A data descriptor is in preparation
+(target: *Data* / MDPI).

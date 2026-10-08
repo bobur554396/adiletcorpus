@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it using the metadata below."
+title: "AdiletCodex: A Trilingual (Kazakh-Russian-English) Article-Level Corpus of the Codes and Laws of Kazakhstan"
+type: dataset
+version: "1.1"
+date-released: "2026-10-08"
+license: CC-BY-4.0
+abstract: >-
+  AdiletCodex is a full-text, article-level, trilingual (Kazakh, Russian and English) corpus of
+  the currently in-force codes and substantive laws of the Republic of Kazakhstan, parsed from
+  the official legal database adilet.zan.kz. It contains 65,825 article records across 343
+  documents (24 codes and 319 laws, including the Constitution); 296 documents are present in all
+  three languages. Each record carries the full article text, structural hierarchy, enumerated
+  points, amendment notes, cross-reference links and document metadata.
+authors:
+  - family-names: Mukhsimbayev
+    given-names: Bobur
+    orcid: "https://orcid.org/0009-0008-4606-3628"
+    affiliation: "Kazakh-British Technical University (KBTU)"
+    email: b.mukhsimbaev@kbtu.kz
+  - family-names: Pak
+    given-names: Alexandr
+    orcid: "https://orcid.org/0000-0002-8685-9355"
+    affiliation: "Kazakh-British Technical University (KBTU)"
+  - family-names: Kuralbayev
+    given-names: Aibek
+    orcid: "https://orcid.org/0009-0001-0811-5385"
+    affiliation: "Kazakh-British Technical University (KBTU)"
+keywords:
+  - Kazakh legislation
+  - legal corpus
+  - legal NLP
+  - low-resource NLP
+  - legal information retrieval
+  - trilingual corpus
+  - Kazakh
+  - Russian
+  - English
+  - adilet.zan.kz
+doi: "10.5281/zenodo.22812625"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22812625"
+    description: "Concept DOI (always resolves to the latest version)"
+  - type: doi
+    value: "10.5281/zenodo.22812626"
+    description: "Version DOI for v1.0"
+repository-code: "https://github.com/bobur554396/adiletcorpus"
+url: "https://huggingface.co/datasets/bobur-m/adiletcodex"

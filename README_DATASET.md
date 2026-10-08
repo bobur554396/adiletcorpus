@@ -58,12 +58,16 @@ Files:
 - `docs/RELATED_WORK.md` - positioning vs prior datasets
 
 ## Record schema (key fields)
-`doc_id, doc_type (code|law), lang (rus|kaz|eng), title, status, act_form, act_form_ru,
+`doc_id, doc_type (code|law), slug, lang (rus|kaz|eng), title, status, act_form, act_form_ru,
 legal_sphere, legal_sphere_ru, adopting_organ, adopting_organ_ru, database_section,
 database_section_ru, state_registry_number, npa_registration_number, adoption_date, change_date,
 publication_date, publication_reference, publication_reference_ru, adoption_place, region_action,
-part, section, chapter, article_id, article_no, article_title, article_text, paragraphs,
-notes, links, url`
+citation, doc_date, doc_number, part, section, chapter, article_id, article_no, article_title,
+article_text, paragraphs, notes, links, url`
+
+(37 fields. `slug` is a short code mnemonic (null for laws); `citation` is the human-readable
+source citation, with `doc_date` / `doc_number` parsed from it. `paragraphs`, `notes` and
+`links` are nested and kept in the JSONL only; the CSV carries the 34 scalar fields.)
 
 `article_text` is the full article body; `paragraphs` holds the numbered points with their
 own inline links; `notes` holds amendment/editorial footnotes.
@@ -109,7 +113,9 @@ records were removed.
 - 0 cross-language identical article texts (Kazakh, Russian and English are genuinely distinct)
 - Kazakh records carry Kazakh-specific letters (script integrity checked)
 - Article-count alignment across languages (median difference 0 per document)
-- Empty / repealed-article stubs removed; duplicate article numbers collapsed
+- Empty / repealed-article stubs removed; `article_no` is unique within almost every
+  (document, language) group (19 residual same-number groups remain and are documented under
+  "Known limitations" in `docs/CODEBOOK.md`; disambiguate with `article_id`)
 - Metadata coverage ~100% of documents
 See `notebooks/kz_codes_qc.ipynb`.
 

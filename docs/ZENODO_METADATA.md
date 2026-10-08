@@ -56,6 +56,8 @@ When uploading v1.1, add it as a **new version** of the existing concept DOI
 - README_DATASET.md
 - LICENSE
 - CODEBOOK.md   (docs/CODEBOOK.md)
+- CHANGELOG.md
+- CITATION.cff
 
 **Related/Alternate identifiers (optional):** link the data-descriptor paper's DOI here once
 the descriptor (Data / Data in Brief) is published.
