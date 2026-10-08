@@ -28,6 +28,9 @@ __pycache__/
 # private planning notes
 docs/PUBLICATION_PLAN*.md
 
+# data-descriptor paper draft - kept LOCAL only until submitted to a journal
+paper/
+
 # paper/ build junk - track only the cleaned LaTeX source + figures if desired
 paper/latex/tectonic            # 60 MB tectonic binary
 paper/latex/mdpi_src/           # upstream MDPI template clone (has its own .git, large .eps, template.pdf)

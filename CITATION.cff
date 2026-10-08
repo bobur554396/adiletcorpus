@@ -2,13 +2,13 @@ cff-version: 1.2.0
 message: "If you use this dataset, please cite it using the metadata below."
 title: "AdiletCodex: A Trilingual (Kazakh-Russian-English) Article-Level Corpus of the Codes and Laws of Kazakhstan"
 type: dataset
-version: "1.1"
+version: "2.0"
 date-released: "2026-10-08"
 license: CC-BY-4.0
 abstract: >-
   AdiletCodex is a full-text, article-level, trilingual (Kazakh, Russian and English) corpus of
   the currently in-force codes and substantive laws of the Republic of Kazakhstan, parsed from
-  the official legal database adilet.zan.kz. It contains 65,825 article records across 343
+  the official legal database adilet.zan.kz. It contains 65,807 article records across 343
   documents (24 codes and 319 laws, including the Constitution); 296 documents are present in all
   three languages. Each record carries the full article text, structural hierarchy, enumerated
   points, amendment notes, cross-reference links and document metadata.

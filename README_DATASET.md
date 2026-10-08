@@ -1,6 +1,6 @@
 # AdiletCodex: A Trilingual (Kazakh-Russian-English) Article-Level Corpus of the Codes and Laws of Kazakhstan
 
-**Version 1.1** - Source: adilet.zan.kz (Information and Legal System of Normative Legal Acts of the Republic of Kazakhstan, "Adilet")
+**Version 2.0** - Source: adilet.zan.kz (Information and Legal System of Normative Legal Acts of the Republic of Kazakhstan, "Adilet")
 
 ## Authors
 - Bobur Mukhsimbayev (corresponding), ORCID 0009-0008-4606-3628, b.mukhsimbaev@kbtu.kz
@@ -43,10 +43,10 @@ translation-fidelity study, and temporal ("law-as-of-date") modeling.
 See `docs/RELATED_WORK.md` for the full positioning and comparators.
 
 ## Contents / size
-- 65,825 article records (one JSON object / one CSV row per article per language)
+- 65,807 article records (one JSON object / one CSV row per article per language)
 - 343 documents: 24 codes + 319 laws (incl. the Constitution); 296 documents present in all
   three languages
-- Languages: Russian 22,117 + Kazakh 22,099 + English 21,609 article records
+- Languages: Russian 22,112 + Kazakh 22,098 + English 21,597 article records
 - Document adoption years: 1991-2026
 - Article length (characters): median 1,062, mean 1,893, max 236,715
 
@@ -75,14 +75,14 @@ own inline links; `notes` holds amendment/editorial footnotes.
 ### Language of the metadata fields (important)
 Only `title`, `status`, `article_title` and `article_text` are genuinely per-language and are
 the **official** adilet.zan.kz translations. The document-"passport" fields come from adilet's
-document card, which adilet publishes in **Russian only**. In v1.1 several of them have been
+document card, which adilet publishes in **Russian only**. In v2.0 several of them have been
 **localized** to the row's `lang`; each keeps a companion `*_ru` column with the original
 Russian value for provenance.
 
 - **Official per-language text:** `title`, `status`, `article_title`, `article_text`.
 - **Localized by a curated term map** (official body names / fixed topic sections, reviewed by
   hand - not machine translation): `act_form`, `adopting_organ`, `database_section`.
-- **Localized by machine translation (local Qwen3.5-122B, thinking disabled), i.e. reference
+- **Localized by machine translation (local Qwen3.5-122B-A10B, thinking disabled), i.e. reference
   metadata only:** `legal_sphere` and `publication_reference`. These are provided for
   convenience (filtering / search) and are **not** authoritative; the original Russian is kept
   in the `*_ru` companion column. The Kazakh output uses correct Kazakh legal terminology (the
@@ -94,7 +94,7 @@ Russian value for provenance.
 Every localized field `X` has an `X_ru` companion (`act_form_ru`, `legal_sphere_ru`,
 `publication_reference_ru`, `adopting_organ_ru`, `database_section_ru`) carrying the original
 Russian. Russian (`rus`) rows keep the Russian value in `X` itself. Use `status` (not act
-form) for validity/in-force state. The former `legal_force` field was **removed in v1.1** (it
+form) for validity/in-force state. The former `legal_force` field was **removed in v2.0** (it
 duplicated `act_form` in 323/343 documents and was mislabeled - it was never a validity
 indicator). Reproducibility artifacts (term maps, translation maps, QA-failure log, build
 scripts) live under `localization/`. See `CHANGELOG.md`.
@@ -107,15 +107,18 @@ a consistent article-level schema; document metadata was taken from the official
 ("info") page. A given act carries the same document id across the three languages, so the
 languages are aligned by (document, article number). Where the English version of a code
 merges parts that Russian/Kazakh keep as separate documents (Civil Code), the duplicate
-records were removed.
+records were removed. In v2.0, 18 further records that were parser artifacts (entry-into-force /
+amendment fragments split off from their parent article, a quoted old-code article, truncated
+compound article numbers, and stale same-language duplicates) were repaired without dropping any
+wording; see `CHANGELOG.md` and `localization/fix_duplicate_articles.py`.
 
 ## Data validation
 - 0 cross-language identical article texts (Kazakh, Russian and English are genuinely distinct)
 - Kazakh records carry Kazakh-specific letters (script integrity checked)
 - Article-count alignment across languages (median difference 0 per document)
-- Empty / repealed-article stubs removed; `article_no` is unique within almost every
-  (document, language) group (19 residual same-number groups remain and are documented under
-  "Known limitations" in `docs/CODEBOOK.md`; disambiguate with `article_id`)
+- Empty / repealed-article stubs removed; `article_no` is unique within every
+  (document, language) group (the 19 residual same-number groups found in the v1.1 audit were
+  all repaired in v2.0; 0 duplicate `(doc_id, lang, article_no)` keys remain)
 - Metadata coverage ~100% of documents
 See `notebooks/kz_codes_qc.ipynb`.
 
@@ -127,11 +130,11 @@ See `notebooks/kz_codes_qc.ipynb`.
 
 ## How to cite
 Mukhsimbayev, B., Pak, A., & Kuralbayev, A. (2026). *AdiletCodex: A Trilingual (Kazakh-Russian-English)
-Article-Level Corpus of the Codes and Laws of Kazakhstan* (Version 1.1) [Data set]. Zenodo.
+Article-Level Corpus of the Codes and Laws of Kazakhstan* (Version 2.0) [Data set]. Zenodo.
 https://doi.org/10.5281/zenodo.22812625
 
 Concept DOI (always resolves to the latest version): 10.5281/zenodo.22812625
-Version 1.0 DOI: 10.5281/zenodo.22812626 (v1.1 version DOI is assigned on upload; not yet published)
+Version 1.0 DOI: 10.5281/zenodo.22812626 (v2.0 version DOI is assigned on upload; not yet published)
 Record: https://zenodo.org/records/22812626
 Also on HuggingFace: https://huggingface.co/datasets/bobur-m/adiletcodex
 
