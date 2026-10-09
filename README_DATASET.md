@@ -134,8 +134,9 @@ Article-Level Corpus of the Codes and Laws of Kazakhstan* (Version 2.0) [Data se
 https://doi.org/10.5281/zenodo.22812625
 
 Concept DOI (always resolves to the latest version): 10.5281/zenodo.22812625
-Version 1.0 DOI: 10.5281/zenodo.22812626 (v2.0 version DOI is assigned on upload; not yet published)
-Record: https://zenodo.org/records/22812626
+Version 2.0 DOI: 10.5281/zenodo.23260689 (published 2026-10-09; latest)
+Version 1.0 DOI: 10.5281/zenodo.22812626 (earlier version)
+Record (latest): https://zenodo.org/records/23260689
 Also on HuggingFace: https://huggingface.co/datasets/bobur-m/adiletcodex
 
 ## Quick start

@@ -41,7 +41,8 @@ Hub (links above); because of its size it is not stored in this repository. See
 `docs/CODEBOOK.md` for field definitions and `CHANGELOG.md` for the version history.
 
 ## Status
-v1.0 is published on Zenodo (version DOI 10.5281/zenodo.22812626) and HuggingFace. v2.0 (a
-major release: breaking schema changes plus a duplicate/fragment data fix, see `CHANGELOG.md`)
-is prepared and pending upload as a new version under the existing concept DOI
-(10.5281/zenodo.22812625). A data descriptor is in preparation (target: *Data* / MDPI).
+v2.0 is published (2026-10-09) on Zenodo (version DOI 10.5281/zenodo.23260689) and HuggingFace,
+under the concept DOI 10.5281/zenodo.22812625 (always resolves to the latest version). v2.0 is a
+major release: breaking schema changes plus a duplicate/fragment data fix (see `CHANGELOG.md`).
+v1.0 remains available as an earlier version (version DOI 10.5281/zenodo.22812626). A data
+descriptor is in preparation (target: *Data* / MDPI).

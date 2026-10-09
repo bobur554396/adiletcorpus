@@ -128,5 +128,6 @@ Kazakhstan (source: adilet.zan.kz). Unofficial research copy; verify in-force te
 ## Citation
 Mukhsimbayev, B., Pak, A., & Kuralbayev, A. (2026). *AdiletCodex: A Trilingual (Kazakh-Russian-English)
 Article-Level Corpus of the Codes and Laws of Kazakhstan* (v2.0) [Data set]. Zenodo.
-https://doi.org/10.5281/zenodo.22812625 (concept DOI, resolves to the latest version; v1.0
-version DOI: 10.5281/zenodo.22812626)
+https://doi.org/10.5281/zenodo.22812625 (concept DOI, always resolves to the latest version).
+Latest is v2.0 (version DOI 10.5281/zenodo.23260689, published 2026-10-09); v1.0 version DOI:
+10.5281/zenodo.22812626.
